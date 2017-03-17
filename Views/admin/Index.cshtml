@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+    $('.nav-tabs a').on('shown.bs.tab', function(event){
+        var x = $(event.target).text();         // active tab
+        var y = $(event.relatedTarget).text();  // previous tab
+        $(".act span").text(x);
+        $(".prev span").text(y);
+    });
+});
+</script>
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#home">About Us</a></li>
+                        <li><a href="#menu1">Ceo Message</a></li>
+                       
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h3>About Us </h3>
+                        <form method="post" action="~/admin/updatePageAbout">
+                            <div class="form-group">
+                                <label for="comment">About us:</label>
+                               
+                                <textarea class="form-control"  rows="5" name="about">@ViewBag.pageabout</textarea>
+                                <input type="submit" value="submit" />
+                            </div>
+                        </form>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>CEO Message</h3>
+                        <form method="post" action="~/admin/updatePage">
+                            <div class="form-group">
+                                <label for="comment">Ceo Message:</label>
+                                <textarea class="form-control" value="" rows="5" name="ceo">@ViewBag.page</textarea>
+                                <input type="submit" value="submit" />
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                @*<hr>
+                <p class="act"><b>Active Tab</b>: <span></span></p>
+                <p class="prev"><b>Previous Tab</b>: <span></span></p>*@
+                </div>
+        </div>
+
+    </div>
+</div>

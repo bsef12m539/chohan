@@ -1,0 +1,12 @@
+﻿a{cursor: pointer; color: #F00BA4;}
+textarea{width:70%; height:100px;}
+
+/* CLIP - MESSAGE POPUP */
+#clip-popup{
+  pointer-events: none;
+  position: fixed; z-index:9999; display:none;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);
+  font: 2em/1 sans-serif; color: #1CEA6E;
+  opacity: 0.9;
+}
