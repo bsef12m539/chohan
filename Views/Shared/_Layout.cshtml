@@ -180,7 +180,15 @@
                 <!-- end col-lg-6 -->
                 <ul class="topmenu pull-right">
                     <li><a href="~/Home/Index"> <span class="bg-ico home-white-ico"></span>Home</a></li>
-                    <li><a href="" data-toggle="modal" data-target="#myModal"> <span class="bg-ico home-white-ico"></span>Login</a></li>
+                    @if (Session["user"] != null)
+                    {
+                        <li><a href="~/Home/Logout"> <span class="bg-ico home-white-ico"></span>Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="" data-toggle="modal" data-target="#myModal"> <span class="bg-ico home-white-ico"></span>Login</a></li>
+
+                    }
                     <li><a href="" data-toggle="modal" data-target="#signup"> <span class="bg-ico home-white-ico"></span>SignUp</a></li>
                     @*<li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button></li>*@
                 </ul>
