@@ -2,16 +2,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@using chohan.Models;
 
     <!-- end header -->
-
+@{
+    dbchohanEntities db = new dbchohanEntities();
+    property p=db.properties.Find(ViewBag.id);
+    }
     <section class="post-wrapper-top dm-shadow clearfix">
         <div class="container">
             <div class="post-wrapper-top-shadow"> <span class="s1"></span> </div>
             <div class="col-lg-12 page-heading">
                 <h2>
-                    Gray Structure House Available For Sale
+                    @p.Description
                 </h2>
             </div>
         </div>
@@ -28,9 +31,9 @@
                                 <ul class="slides">
                                     <li>
 
-                                        <img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153390_4436439.jpg&d=700&r=1&w=700&h=400&aw=1" alt="">
+                                        <img class="img-thumbnail" src="@p.pimage" alt="">
                                     </li>
-                                    <li>
+                                    @*<li>
 
                                         <img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153396_4436439.jpg&d=700&r=1&w=700&h=400&aw=1" alt="">
                                     </li>
@@ -57,11 +60,11 @@
                                     <li>
 
                                         <img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153441_4436439.jpg&d=700&r=1&w=700&h=400&aw=1" alt="">
-                                    </li>
+                                    </li>*@
                                 </ul>
                             </div>
                             <div id="carousel" class="flexslider clearfix">
-                                <ul id="prop-crousel" class="slides">
+                                @*<ul id="prop-crousel" class="slides">
                                     <li class=""><img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153390_4436439.jpg&d=295&r=1&w=295&h=295&aw=1" alt=""></li>
                                     <li class=""><img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153396_4436439.jpg&d=295&r=1&w=295&h=295&aw=1" alt=""></li>
                                     <li class=""><img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153423_4436439.jpg&d=295&r=1&w=295&h=295&aw=1" alt=""></li>
@@ -70,33 +73,18 @@
                                     <li class=""><img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153435_4436439.jpg&d=295&r=1&w=295&h=295&aw=1" alt=""></li>
                                     <li class=""><img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153438_4436439.jpg&d=295&r=1&w=295&h=295&aw=1" alt=""></li>
                                     <li class=""><img class="img-thumbnail" src="https://images.zameen.com/common/resize.php?img=4/11153441_4436439.jpg&d=295&r=1&w=295&h=295&aw=1" alt=""></li>
-                                </ul>
+                                </ul>*@
                             </div>
                         </div>
                         <div id="location-title" class="title clearfix">
 
-                            <h2><small>Bahria Town, Lahore</small></h2>
+                            <h2><small>@p.pAddress</small></h2>
                         </div>
                         <!-- end title -->
                         <div class="property_desc clearfix">
 
                             <p>
-                                House for sale Block CC
-                                Having 5 Beds.
-                                Attached Baths.
-                                Double Kitchen.
-                                Drawing.
-                                Dinning.
-                                Servant Quarter with Bath.
-                                Corner
-                                Near To Main Park.
-                                Near to Markit.
-                                40 ft Road + 80 ft Road.
-                                Beautiful Location.
-                                Very Reasonable Price.
-                                Golden Chance.
-                                Reasonable price.
-                                Please contact us for more details.
+                                @p.Description
                             </p>
                         </div>
                         <div class="">
@@ -105,47 +93,46 @@
 
                                     <tr>
                                         <th>Price                    :</th>
-                                        <td>PKR&nbsp;10,500,000</td>
+                                        <td>PKR&nbsp;@p.price</td>
                                     </tr>
 
                                     <tr>
                                         <th>Purpose                    :</th>
-                                        <td>Buy</td>
+                                        <td>@p.purpose</td>
                                     </tr>
                                     <tr>
                                         <th>Type                      :</th>
-                                        <td>House</td>
+                                        <td>@p.type</td>
                                     </tr>
                                     <tr>
                                         <th>Location                          :</th>
                                         <td>
-                                            Bahria Town                            ,
-                                            Lahore
+                                            @p.pAddress
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Bedrooms                              :</th>
-                                        <td>                                5                                                              </td>
+                                        <td>                                @p.Bedrooms                                                             </td>
                                     </tr>
                                     <tr>
                                         <th>Bathrooms                                :</th>
-                                        <td>6</td>
+                                        <td>@p.Bathrooms</td>
                                     </tr>
                                     <tr>
                                         <th>Area                                  :</th>
-                                        <td>7 Marla</td>
+                                        <td>@p.Area  Marla</td>
                                     </tr>
                                     <tr>
                                         <th>Added                                    :</th>
-                                        <td>2 months ago                                    </td>
+                                        <td>@p.timeadded                                    </td>
                                     </tr>
                                     <tr>
                                         <th>Marketed By                                      :</th>
-                                        <td>Zaheer Ismail</td>
+                                        <td>@p.Contact_Person</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div style="clear:both">
+                            @*<div style="clear:both">
                                 <h1 class="page-header branches-heading">General Amenities</h1>
                                 <div class="col-lg-5 col-md-5 col-xs-12 padding feat-col-right">
                                     <h6><strong>Main Features</strong></h6>
@@ -215,12 +202,12 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
 
 
-                    <div class="map-wrap clearfix">
+                    @*<div class="map-wrap clearfix">
                         <span class="map-label"></span>
                         <div id="property_map"> </div>
                         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -257,12 +244,12 @@
 
                             initialize();
                         </script>
-                    </div>
+                    </div>*@
 
                 </div>
                 <!-- end content -->
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 last clearfix">
-                    <div id="prop-price"><strong>PKR&nbsp;10,500,000</strong></div>
+                    <div id="prop-price"><strong>PKR&nbsp;@p.price</strong></div>
 
                     <div id="agent-box" class="seperate-box clearfix" data-effect="slide-right">
 
@@ -274,18 +261,18 @@
 
                                 <tr>
                                     <td>Name: </td>
-                                    <td>Zaheer Ismail</td>
+                                    <td>@p.Contact_Person</td>
                                 </tr>
 
 
                                 <tr>
                                     <td>E-mail: </td>
-                                    <td>zaheeerismail1990@gmail.com</td>
+                                    <td>@p.email</td>
                                 </tr>
 
                                 <tr>
                                     <td>Cell: </td>
-                                    <td>+92-3214850382</td>
+                                    <td>@p.phone</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -340,7 +327,7 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div id="search-box" class="searchmodule clearfix" data-effect="slide-right">
+                @*<div id="search-box" class="searchmodule clearfix" data-effect="slide-right">
                     <h3 class="search-heading">
                         Find Your Property
                     </h3>
@@ -766,9 +753,9 @@
                         <div class="clearfix"></div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <a onclick="document.forms['advanced_search'].submit();" class="btn btn-inverse btn-block"><i class="bg-ico search-white-ico"></i> SEARCH PROPERTY</a> </div>
                     </form>
-                </div>
+                </div>*@
                 <!--Hiden content changer-->
-                <div class="ele-hide">
+                @*<div class="ele-hide">
                     <div id="rent-min-sel-con">
                         <select id="rent-min-sel" class="show-menu-arrow selectpicker">
                             <option value="">
@@ -853,7 +840,7 @@
                             <option value="50000000">5 Crore</option>
                         </select>
                     </div>
-                </div>
+                </div>*@
 
             </div>
             <!-- end of widget -->
@@ -862,6 +849,7 @@
         </div>
         <!-- end container -->
     </section>
+
     <!--[if lt IE 9]><script>(function(){e("http://agency.zameen.com/templates/template_8/images_css/")})()</script><![endif]-->
   
     <!-- end copyright -->

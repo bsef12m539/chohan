@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
+@using chohan.Models;
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                       
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (ViewBag.user != null)
+                        {
+                            foreach (user u in ViewBag.user)
+                            {
+                                <tr>
+                                    <th>@u.uname</th>
+                                    <td>@u.email</td>
+                                    <td>@u.pass</td>
+                                    <td><a href="~/admin/deleteuser?id=@u.Id">Delete</a></td>
+                                </tr>
+                            }
+                        }
+                    }
+                   
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
