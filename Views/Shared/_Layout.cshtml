@@ -268,11 +268,14 @@
                                 To Rent
                             </a>
                         </li>
+                        @if (Session["user"] != null)
+                        {
                         <li class="dropdown fhmm-fw ">
                             </i><a href="~/Home/landlords">
                                 Landlords
                             </a>
                         </li>
+                        }
                         <li class="dropdown fhmm-fw ">
                             </i><a href="~/Home/Ceo">
                                 CEO Message
@@ -283,11 +286,11 @@
                                 About US
                             </a>
                         </li>
-                        <li class="dropdown fhmm-fw ">
+                        @*<li class="dropdown fhmm-fw ">
                             </i><a href="~/Home/staff">
                                 Staff
                             </a>
-                        </li>
+                        </li>*@
 
                         @*<li class="dropdown fhmm-fw ">
                             </i><a href="~/Home/Jobs">
