@@ -199,8 +199,16 @@
                         <label>Purpose <em>(required)</em></label>
                         <select name="purpose" class="show-menu-arrow selectpicker">
                           <option value="@p.purpose">@p.purpose</option>
-                            <option value="For Sale">For Sale</option>
-                            <option value="To Rent">To Rent</option>
+                            @if (p.purpose.Trim() == "For Sale")
+                            {
+                                <option value="To Rent">To Rent</option>
+                            }
+                            else
+                            {
+                                <option value="For Sale">For Sale</option>
+                            }
+                           
+                            
                         </select>
                         <label>Type <em>(required)</em></label>
                         <select name="type" class="show-menu-arrow selectpicker">
