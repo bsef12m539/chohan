@@ -276,6 +276,14 @@
                             </a>
                         </li>
                         }
+                        @if (Session["user"] != null)
+                        {
+                            <li class="dropdown fhmm-fw ">
+                                <a href="~/Home/myproperty">
+                                    My Properties
+                                </a>
+                            </li>
+                        }
                         <li class="dropdown fhmm-fw ">
                             </i><a href="~/Home/Ceo">
                                 CEO Message

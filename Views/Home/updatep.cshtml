@@ -1,7 +1,7 @@
 ﻿@{
-    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using chohan.Models;
 
 
 
@@ -24,12 +24,16 @@
                 <div class="">
 
                     <p>Please feel free to send information of your properties for accurate valuation and comprehensive guidance.</p>
-                    <form enctype="multipart/form-data" action="~/Home/addPropertyMobile" method="post">
-                    <input type="hidden" value="@ViewBag.id" name="uid" />
-                        Image <input type="file" title="search image" id="file" name="file" required />
+                @if (ViewBag.up != null)
+                {
+                 property p=ViewBag.up;
+                    <form enctype="multipart/form-data" action="~/Home/updateProperty" method="post">
+                    <input type="hidden" name="pid" value="@p.pid" />
+                        @*Image <input type="file" title="search image" id="file" name="file" />*@
                         <label>City <em>(required)</em></label>
                         <div>
-                            <select name="city" required class="show-menu-arrow selectpicker">                           
+                            <select name="city" class="show-menu-arrow selectpicker">
+                                <option value="@p.city">@p.city</option>                               
                                 <option value="Lahore">Lahore</option>
                                 <option value="Karachi">Karachi</option>
                                 <option value="Islamabad">Islamabad</option>
@@ -193,14 +197,14 @@
                             </select>
                         </div>
                         <label>Purpose <em>(required)</em></label>
-                        <select name="purpose" required class="show-menu-arrow selectpicker">
-
+                        <select name="purpose" class="show-menu-arrow selectpicker">
+                          <option value="@p.purpose">@p.purpose</option>
                             <option value="For Sale">For Sale</option>
                             <option value="To Rent">To Rent</option>
                         </select>
                         <label>Type <em>(required)</em></label>
-                        <select name="type" required class="show-menu-arrow selectpicker">
-
+                        <select name="type" class="show-menu-arrow selectpicker">
+                            <option value="@p.type">@p.type</option>
                             <option value="Houses">Houses</option>
                             <option value="Flats">Flats</option>
                             <option value="Upper Portions">Upper Portions</option>
@@ -223,11 +227,11 @@
                         </select>
 
                         <label>Asking Price (PKR) <em>(required)</em></label>
-                        <input type="text" name="price" required id="ll_price" class="form-control">
+                        <input type="text" name="price" id="ll_price" class="form-control" value="@p.price">
 
                         <label>Bedrooms</label>
-                        <select name="beds" required class="show-menu-arrow selectpicker">
-
+                        <select name="beds" class="show-menu-arrow selectpicker">                           
+                            <option value="@p.Bedrooms">@p.Bedrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -240,7 +244,9 @@
                             <option value="10+">10+</option>
                         </select>
                         <label>Bathrooms</label>
-                        <select name="bath" required class="show-menu-arrow selectpicker">
+                        <select name="bath" class="show-menu-arrow selectpicker">
+                          
+                            <option value="@p.Bathrooms">@p.Bathrooms</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -254,36 +260,37 @@
                         </select>
 
                         <label>Covered Area</label>
-                        <input type="text" name="area" required class="form-control">
+                        <input type="text" name="area" class="form-control" value="@p.Area">
 
                         <label>Unit</label>
-                        <select name="area_unit" required class="show-menu-arrow selectpicker">                            
-                            <option value="Marla">Marla</option>
+                        <select name="area_unit" class="show-menu-arrow selectpicker">
+                          
+                            <option selected value="Marla">Marla</option>
                             @*<option value="Kanal">Kanal</option>*@
                         </select>
 
                         <label>Property Address</label>
-                        <textarea rows="3" name="address" required class="form-control address-text"></textarea>
+                        <textarea rows="3" name="address"  class="form-control address-text">@p.pAddress</textarea>
 
                         <label>Property Description</label>
-                        <textarea rows="3" name="des" required class="form-control address-text"></textarea>
+                        <textarea rows="3" required name="des"  class="form-control address-text">@p.Description</textarea>
 
                         <h3>Contact Details</h3>
 
                         <label>Contact Person</label>
-                        <input type="text" name="person_name" required class="form-control">
+                        <input type="text" name="person_name" value="@p.Contact_Person" class="form-control">
 
                         <label>Email <em>(required)</em></label>
-                        <input type="text" name="email" required class="form-control">
+                        <input type="text" name="email" class="form-control" value="@p.email">
 
                         <label>Phone <em>(required)</em></label>
-                        <input type="text" name="phone" required class="form-control">
+                        <input type="text" name="phone" class="form-control" value="@p.phone">
 
                         <label>Cell</label>
-                        <input type="text" name="cell" required class="form-control">
+                        <input type="text" name="cell" class="form-control" value="@p.cell">
 
                         <label>Fax</label>
-                        <input type="text" name="fax" required class="form-control">
+                        <input type="text" name="fax" class="form-control" value="@p.fax">
 
 
 
@@ -292,13 +299,13 @@
                             <div class="errors_in_div"></div>
                         </div>
                     </form><!-- end search form -->
+                }   
+               
                 </div><!-- end property_wrapper -->
             </div>
 
 
-            <!-- end content -->
-          
-            <!-- end of widget -->
+            
         </div>
         <!-- end row -->
     </div>

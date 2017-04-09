@@ -1,0 +1,238 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using chohan.Models;
+
+
+<!-- end header -->
+
+<section class="post-wrapper-top dm-shadow clearfix">
+    <div class="container">
+        <div class="post-wrapper-top-shadow">
+            <span class="s1"></span>
+        </div>
+        <div class="col-lg-12 page-heading">
+            <h2>My Properties</h2>
+
+        </div>
+    </div>
+</section>
+
+<section class="generalwrapper dm-shadow clearfix">
+    <div class="container">
+        <div class="row">
+            <!-- #left_sidebar -->
+            <div id="content" class="col-lg-8 col-md-8 col-sm-8 col-xs-12 clearfix ">
+                <div class=" ">
+
+
+                    <div>
+                        <form id="sort_form">
+                            <input type="hidden" name="page" value="1">
+
+                            <!--SORT BY-->
+                            @*<div id="sort-head" class="col-lg-3 col-md-3 col-xs-12 ">
+                                    <div class="one_third">
+                                        <label>Sort by</label>
+                                    </div>
+                                    <div class="two_thirds last">
+                                        <select id="inputSortBy" name="sort_by" class="show-menu-arrow selectpicker">
+                                            <option value="" selected>Default</option>
+                                            <option value="price">Price</option>
+                                            <option value="beds">Beds</option>
+                                            <option value="land">Area</option>
+                                            <option value="date">Date</option>
+                                        </select>
+                                    </div>
+                                </div>*@
+
+                            <!--SEARCH ORDER-->
+                            <div class="col-lg-3 col-md-3 col-xs-12 ">
+                                &nbsp;
+                            </div>
+
+
+
+                        </form>
+                        <div class="clear"></div>
+                    </div>
+
+                    @if (ViewBag.rent != null)
+                    {
+                        foreach (property p in ViewBag.rent)
+                        {
+                            <div id="content" class="">
+                                <div id="search-content" class="property_wrapper boxes clearfix">
+                                    <div class="search-list-container">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+                                            <div class="ImageWrapper boxes_img">
+                                                <table align="center" class="featured-image-table" cellpadding="0" cellspacing="0">
+                                                    <tr>
+
+                                                        <td>
+                                                            <img class="search-list-img " src="@p.pimage" alt="">
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <div class="box_type">PKR @p.price</div>
+                                            </div>
+                                            <!-- ImageWrapper -->
+                                        </div>
+                                        <div id="search-details" class="col-lg-8 col-md-8 col-sm-8 col-xs-12 clearfix">
+                                            <div class="title clearfix">
+                                                <h3>
+                                                    <a href="#">
+                                                        @p.pAddress
+                                                    </a> <small class="small_title">
+
+                                                    </small>
+                                                </h3>
+                                                <div class="property_desc clearfix">
+                                                    <p>
+                                                        @p.Description
+                                                    </p>
+                                                    <ul id="prop-btns">
+                                                        <a class="btn btn-primary btn-xs" href="~/Home/ViewProperty/@p.pid" title="">
+                                                            View Property
+                                                        </a>
+
+                                                        <a data-placement="top" type="button" class="btn btn-primary btn-xs blue-btn agent_detailpop" title="Agent Detail" data-container="body" data-toggle="popover" data-content="<table class='table'><tr><td>Name:</td><td>@p.Contact_Person</td></tr><tr><td>Phone:</td><td>@p.phone</td></tr><tr><td>Cell:</td><td>@p.cell</td></tr></table>" data-html="true">
+              Agent Detail              </a>
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- end title -->
+                                        </div>
+                                    </div>
+                                    <div class="boxed_mini_details1 clearfix clear-float">
+                                        @p.city     <span class="sqft"><strong>Area:</strong><i class="bg-ico area-ico"></i>@p.Area @p.Unit</span>
+                                        <span class="status">
+                                            <strong>
+                                                Beds
+                                            </strong><i class="icon-bed"></i> @p.Bedrooms
+                                        </span>
+                                        <span class="status">
+                                            <strong>
+                                                Marketed by
+                                            </strong><i class=""></i>
+                                            @p.Contact_Person
+                                        </span>
+                                        <span class="status">
+                                            <strong>
+                                               <a href="~/Home/deletep?id=@p.pid">Delete</a>
+                                            </strong>
+                                            <strong>
+                                                <a href="~/Home/updatep?id=@p.pid">Update</a>
+                                            </strong>
+                                        </span>
+                                    </div>
+                                    <!-- end boxed_mini_details1 -->
+                                </div>
+                                <!-- end property_wrapper -->
+                            </div>
+                        }
+                    }
+
+
+
+
+
+
+
+
+                    @*<div class="pagination_wrapper pagination_center clearfix">
+                            <ul>
+                                <li class="active"><a href="#" class="pg_links  pg_selected">1</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=2" class="pg_links  pg_a" id="pg_2">2</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=3" class="pg_links  pg_a" id="pg_3">3</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=4" class="pg_links  pg_a" id="pg_4">4</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=5" class="pg_links  pg_a" id="pg_5">5</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=6" class="pg_links  pg_a" id="pg_6">6</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=7" class="pg_links  pg_a" id="pg_7">7</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=8" class="pg_links  pg_a" id="pg_8">8</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=9" class="pg_links  pg_a" id="pg_9">9</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=10" class="pg_links  pg_a" id="pg_10">10</a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=2" class="pg_links  pg_a" id="pg_2">></a></li>
+                                <li><a href="http://www.chohan.com.pk/buy.html?page=18" class="pg_links  pg_a" id="pg_18">>></a></li>
+                            </ul>
+                            <div class="clear-float">
+                                Page <span id="curr_page">1</span> of 18
+                            </div>
+                        </div>*@
+
+
+
+
+                    <!-- end search form -->
+                </div><!-- end property_wrapper -->
+            </div>
+
+
+            <!-- end content -->
+            <!-- end of widget -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!--[if lt IE 9]><script>(function(){e("http://agency.zameen.com/templates/template_8/images_css/")})()</script><![endif]-->
+<!-- end copyright -->
+<!-- Bootstrap core and JavaScript's
+    ================================================== -->
+<script type="text/javascript" src="http://agency.zameen.com/templates/template_8/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="http://agency.zameen.com/templates/template_8/js/jquery.unveilEffects.js"></script>
+<script type="text/javascript" src="http://agency.zameen.com/templates/template_8/js/fhmm.js"></script>
+<script type="text/javascript" src="http://agency.zameen.com/templates/template_8/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="http://agency.zameen.com/templates/template_8/js/application.js"></script>
+<script type="text/javascript" src="http://agency.zameen.com/templates/template_8/js/autofill.js"></script>
+<script type="text/javascript" src="http://agency.zameen.com/templates/template_8/js/scripts.js"></script>
+
+<!-- FlexSlider JavaScript
+    ================================================== -->
+<!--
+<script>
+        $(window).load(function() {
+            $('#carousel').flexslider({
+                animation: "slide",
+                controlNav: true,
+                directionNav: false,
+                animationLoop: true,
+                slideshow: true,
+                itemWidth: 114,
+                itemMargin: 0,
+                asNavFor: '#slider'
+            });
+
+            $('#slider').flexslider({
+                animation: "fade",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: true,
+                sync: "#carousel"
+            });
+
+            $('#property-slider .flexslider').flexslider({
+                animation: "fade",
+                slideshowSpeed: 6000,
+                animationSpeed:	1300,
+                directionNav: true,
+                controlNav: false,
+                keyboardNav: true
+            });
+        });
+    </script>
+     -->
+<script type='text/javascript'>
+
+						if( typeof(paginate_obj) == 'undefined' )
+						{
+							 var paginate_obj = { 'ajax':{'form_id':'', 'link':'', 'onclick':'', 'callback':''},
+												  'submit':{'form_id':'', 'page_id':''}
+												};
+						}
+
+</script>
+
