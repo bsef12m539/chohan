@@ -108,31 +108,52 @@
                         <label>Bedrooms</label>
                         <select name="beds" class="show-menu-arrow selectpicker">                           
                             <option value="@p.Bedrooms">@p.Bedrooms</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10+">10+</option>
+                            @{
+                                List<string> lbed = new List<string>();
+                                lbed.Add("1");
+                                lbed.Add("2");
+                                lbed.Add("3");
+                                lbed.Add("4");
+                                lbed.Add("5");
+                                lbed.Add("6");
+                                lbed.Add("7");
+                                lbed.Add("8");
+                                lbed.Add("9");
+                                lbed.Add("10+");
+                                foreach (var c in lbed)
+                                {
+                                    if (c != p.Bedrooms)
+                                    {
+                                        <option value="@c">@c</option>
+                                    }
+                                }
+                            }
+                           
                         </select>
                         <label>Bathrooms</label>
                         <select name="bath" class="show-menu-arrow selectpicker">
                           
                             <option value="@p.Bathrooms">@p.Bathrooms</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10+">10+</option>
+                            @{
+                                List<string> lbed1 = new List<string>();
+                                lbed1.Add("1");
+                                lbed1.Add("2");
+                                lbed1.Add("3");
+                                lbed1.Add("4");
+                                lbed1.Add("5");
+                                lbed1.Add("6");
+                                lbed1.Add("7");
+                                lbed1.Add("8");
+                                lbed1.Add("9");
+                                lbed1.Add("10+");
+                                foreach (var c in lbed1)
+                                {
+                                    if (c != p.Bathrooms)
+                                    {
+                                        <option value="@c">@c</option>
+                                    }
+                                }
+                            }
                         </select>
 
                         <label>Covered Area</label>
