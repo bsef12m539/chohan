@@ -122,7 +122,11 @@
                                         </span>
                                         <span class="status">
                                             <strong>
-                                               <a href="~/Home/deletep?id=@p.pid">Delete</a>
+                                                <a href="#" id="ubutton" data-id="@p.pid" data-toggle="modal" data-target="#user_update">Delete</a>
+
+                                                                                             
+
+
                                             </strong>
                                             <strong>
                                                 <a href="~/Home/updatep?id=@p.pid">Update</a>
@@ -139,7 +143,7 @@
 
 
 
-
+                    
 
 
 
@@ -225,7 +229,44 @@
         });
     </script>
      -->
+
+<div id="user_update" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content modal-col-red">
+            <form method="post" action="~/Home/deletep">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Delet Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="email_address">Are you sure you want to delete this property :</label>
+
+
+
+
+                    <input type="hidden" id="pid" name="pid" value="" />
+
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Yes" class="btn btn-link waves-effect" />
+                   
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">No</button>
+                </div>
+
+                <p id="my_id"></p>
+            </form>
+        </div>
+    </div>
+</div>
 <script type='text/javascript'>
+    $(document).on("click", "#ubutton", function () {
+       
+
+
+       
+        $(".modal-body #pid").val($(this).data('id'));
+    });
 
 						if( typeof(paginate_obj) == 'undefined' )
 						{
