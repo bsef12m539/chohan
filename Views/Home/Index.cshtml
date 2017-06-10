@@ -6,6 +6,13 @@
 }
 
 @using chohan.Models;
+@{
+    if (Session["signup"] != null)
+    {
+        <script> alert("Congrtulation your profile is created successfully!") </script>
+        Session["signup"] = null;
+    }
+}
     <section id="one-parallax" class="parallax" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20">
         <div class="mapandslider">
             <div class="overlay1 dm-shadow">
